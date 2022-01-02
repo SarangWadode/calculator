@@ -4,12 +4,11 @@ export default class Buttons extends Component {
     render() {
         return (
             <div>
-                <h1>Buttons</h1>
                 <div className="buttons">
                     <div className="row-one">
                         <button id="clear">AC</button>
                         <button id="divide">/</button>
-                        <button id="multiply">X</button>
+                        <button id="multiply">x</button>
                     </div>
                     <div className="row-two">
                         <button id="seven">7</button>
