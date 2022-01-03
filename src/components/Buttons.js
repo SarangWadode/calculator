@@ -1,10 +1,10 @@
 import React from 'react'
 import './buttons.css'
 
-export default function Buttons({id , number}) {
+export default function Buttons({handleClick, id, number}) {
     return (
         <div className={id}>
-            <button id={id}>{number}</button>
+            <button onClick={handleClick} id={id}>{number}</button>
         </div>
     )
 }

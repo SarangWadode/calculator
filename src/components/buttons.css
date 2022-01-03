@@ -1,1 +1,32 @@
+.keyboard {
+  background: chartreuse;
+  display: grid;
+  grid-template-areas:
+    "ac ac div x"
+    "seven eight nine sub"
+    "four five six add"
+    "one two three equals"
+    "zero zero dot equals";
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto;
+}
 
+button {
+  padding: 20px 30px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.clear {
+  grid-area: ac;
+  background: chocolate;
+}
+
+.zero {
+  grid-area: zero;
+}
+
+.equals {
+  grid-area: equals;
+}

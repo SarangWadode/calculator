@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Display extends Component {
-    render() {
-        return (
-            <div>
-                <div id="formula"></div>
-                <div id="display">Display</div>
-            </div>
-        )
-    }
+export default function Display( {display,formula}) {
+    return (
+        <div>
+            <div id="display">{display}</div>
+            <div id="formula">{formula}</div>
+        </div>
+    )
 }
