@@ -44,10 +44,12 @@ export default class App extends Component {
           const output = eval(this.state.check.join(''))
           this.setState({
             formula: this.state.check.join(''),
-            check: [...this.state.check, e.target.textContent],
-            display: eval(this.state.check.join(''))
+            check: [output],
+            display: output.toString()
           })
+          console.log(this.state.check.join(''))
         }catch(e) {
+          console.log(e)
           this.setState({
             formula: 'ERROR',
             display: 'ERROR'
@@ -57,7 +59,6 @@ export default class App extends Component {
     }
     
     else {
-      console.log(this.state.display, this.state.display.replace)
       this.setState({
         formula: e.target.textContent,
         check: [...this.state.check, e.target.textContent],
