@@ -57,6 +57,17 @@ export default class App extends Component {
         }
       }
     }
+
+    else if (e.target.id === 'decimal') {
+      if (this.state.display.includes('.')) {
+        return
+      } else {
+        this.setState({
+          formula: this.state.formula + '.',
+          display: this.state.display + '.'
+        })
+      }
+    }
     
     else {
       this.setState({
