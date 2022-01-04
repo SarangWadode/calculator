@@ -41,13 +41,14 @@ export default class App extends Component {
     else if (e.target.id === 'equals') {
       if (this.state.check.length !== 0) {
         try {
-          const output = eval(this.state.check.join(''))
+          let output = eval(this.state.check.join(''))
+          output = Math.round(output*10000)/10000
           this.setState({
             formula: this.state.check.join(''),
             check: [output],
             display: output.toString()
           })
-          console.log(this.state.check.join(''))
+          // console.log(this.state.check.join(''))
         }catch(e) {
           console.log(e)
           this.setState({
@@ -59,12 +60,14 @@ export default class App extends Component {
     }
 
     else if (e.target.id === 'decimal') {
-      if (this.state.display.includes('.')) {
+      const match = this.state.display.match(/[\d\.]+$/)
+      if (match && match[0].includes('.')) {
         return
       } else {
         this.setState({
           formula: this.state.formula + '.',
-          display: this.state.display + '.'
+          display: this.state.display + '.',
+          check: [this.state.display, '.']
         })
       }
     }
@@ -73,7 +76,7 @@ export default class App extends Component {
       this.setState({
         formula: e.target.textContent,
         check: [...this.state.check, e.target.textContent],
-        display: this.state.display.replace(/0/,'') + e.target.textContent
+        display: (this.state.display + e.target.textContent).replace(/^0+(?=\d)/,'')
       })
     }
   }
