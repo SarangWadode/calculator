@@ -11,6 +11,7 @@ export default class App extends Component {
       formula: '0',
       check: [],
       display: '0',
+      temp: '0'
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,7 +21,8 @@ export default class App extends Component {
       this.setState({
         formula: '0',
         check: [],
-        display: '0'
+        display: '0',
+        temp: '0'
       })
     } 
         
@@ -28,12 +30,14 @@ export default class App extends Component {
       if (this.state.display === '0') {
         this.setState({
           formula: '0',
-          display: '0'
+          display: '0',
+          temp: '0'
         })
       } else {
         this.setState({
           formula: this.state.formula + '0',
-          display: this.state.display + '0'
+          display: this.state.display + '0',
+          temp: this.state.display + '0'
         })
       }
     } 
@@ -46,7 +50,8 @@ export default class App extends Component {
           this.setState({
             formula: this.state.check.join(''),
             check: [output],
-            display: output.toString()
+            display: output.toString(),
+            temp: output.toString()
           })
           // console.log(this.state.check.join(''))
         }catch(e) {
@@ -60,23 +65,48 @@ export default class App extends Component {
     }
 
     else if (e.target.id === 'decimal') {
-      const match = this.state.display.match(/[\d\.]+$/)
+      const match = this.state.display.match(/[\d.]+$/)
       if (match && match[0].includes('.')) {
         return
       } else {
         this.setState({
           formula: this.state.formula + '.',
           display: this.state.display + '.',
-          check: [this.state.display, '.']
+          check: [this.state.display, '.'],
+          temp: this.state.display + '.',
         })
       }
     }
-    
-    else {
+
+    else if (e.target.id === 'add' || e.target.id === 'subtract' || e.target.id === 'multiply' || e.target.id === 'divide') {
       this.setState({
         formula: e.target.textContent,
         check: [...this.state.check, e.target.textContent],
         display: (this.state.display + e.target.textContent).replace(/^0+(?=\d)/,'')
+      }, () => {
+          const regExp = this.state.check.join('').match(/[+\-*/]+/gi)[0]
+          const regExpLen = regExp.length;
+          console.log(/-/.test(regExp));
+          console.log(regExp);
+          if (regExpLen > 1) {
+            if (/[-+/*]+(?=[+*/])/.test(regExp)) {
+              this.setState({
+                check: [this.state.temp, this.state.formula]
+              },() => {
+                console.log('other')
+                console.log(this.state.check);
+              })
+            }
+          }
+      })
+    }
+
+    else {
+      this.setState({
+        formula: e.target.textContent,
+        check: [...this.state.check, e.target.textContent],
+        display: (this.state.display + e.target.textContent).replace(/^0+(?=\d)/,''),
+        temp: (this.state.display + e.target.textContent).replace(/^0+(?=\d)/,'')
       })
     }
   }
