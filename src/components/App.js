@@ -45,6 +45,7 @@ export default class App extends Component {
     else if (e.target.id === 'equals') {
       if (this.state.check.length !== 0) {
         try {
+          // eslint-disable-next-line
           let output = eval(this.state.check.join(''))
           output = Math.round(output*10000)/10000
           this.setState({
