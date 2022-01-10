@@ -1,4 +1,24 @@
 .calculator {
-  border: 5px solid black;
-  background: pink;
+  border: 3px solid black;
+  background: rgb(95, 67, 71);
+  border-radius: 20px;
+}
+
+.display {
+  height: 60px;
+  background: coral;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  padding-right: 20px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 12px;
 }

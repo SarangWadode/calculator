@@ -1,14 +1,16 @@
-* {
+* ,::after, ::before {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-#root {
+body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(241, 227, 227);
+  background: rgb(185, 181, 178);
 }
+
+
