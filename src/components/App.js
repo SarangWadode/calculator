@@ -56,7 +56,7 @@ export default class App extends Component {
           })
           // console.log(this.state.check.join(''))
         }catch(e) {
-          console.log(e)
+          // console.log(e)
           this.setState({
             formula: 'ERROR',
             display: 'ERROR'
@@ -87,8 +87,8 @@ export default class App extends Component {
       }, () => {
           const regExp = this.state.check.join('').match(/[+\-*/]+/gi)[0]
           const regExpLen = regExp.length;
-          console.log(/-/.test(regExp));
-          console.log(regExp);
+          // console.log(/-/.test(regExp));
+          // console.log(regExp);
           if (regExpLen > 1) {
             if (/[-+/*]+(?=[+*/])/.test(regExp)) {
               this.setState({

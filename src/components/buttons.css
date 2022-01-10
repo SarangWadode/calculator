@@ -8,20 +8,28 @@
     "zero zero dot equals";
   grid-template-columns: auto auto auto auto;
   grid-template-rows: auto auto auto auto auto;
-  grid-gap: 10px;
+  grid-gap: 5px;
   padding: 10px;
 }
 
-button {
+.button {
   padding: 10px 20px;
   cursor: pointer;
   width: 100%;
   height: 100%;
+  border: 1px solid #3c4043;
+  border-radius: 10px;
+  transition: all 0.15s ease-in-out;
+  background: #3c4043;
+  color: white;
+}
+
+.button:hover {
+  background: black;
 }
 
 .clear {
   grid-area: ac;
-  background: chocolate;
 }
 
 .zero {
